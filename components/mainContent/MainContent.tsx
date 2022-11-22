@@ -50,7 +50,6 @@ export default function MainContent() {
   }, [filterState])
 
   function loadMoreData() {
-    console.log("wtf")
     if (error || loading) return
 
     fetchMore({
@@ -79,8 +78,7 @@ export default function MainContent() {
             data={data.gasStations}
             renderItem={({ item }) => <GasStationCard gasStation={item} />}
             refreshing={loading}
-            // onEndReached={loadMoreData}
-            onEndReachedThreshold={0.2}
+            onEndReached={loadMoreData}
           />
         ) : (
           <Text>Loading</Text>
