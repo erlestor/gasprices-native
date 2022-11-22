@@ -35,7 +35,7 @@ Jeg har valgt å bruke react-native-paper for de fleste komponenter ettersom det
 
 ### Design
 
-For det meste har jeg forsøkt å implementere det samme designet som var brukt i prosjekt 3. Der fikk vi en del tilbakemeldinger på kontrast mellom sidebar og hovedside og synligheten til kortene til hver bensinstasjon. Løsningen har vært å bruke "elevation" på android for å øke skyggen slik at elementene er mer distinkte. Tekst og knapper er generelt litt større og lettere å trykke på enn før. Enda en forbedring var å gi tilbakemelding til bruker etter at en ny pris har blitt lagt til. Dette gjøres ved en liten popup på bunnen av skjermen med grønn bakgrunn og tekst som gjør det tydelig at prisen er lagt til.
+For det meste har jeg forsøkt å implementere det samme designet som var brukt i prosjekt 3. Der fikk vi en del tilbakemeldinger på kontrast mellom sidebar og hovedside og synligheten til kortene til hver bensinstasjon. Løsningen har vært å bruke "elevation" på android for å øke skyggen slik at elementene er mer distinkte. Tekst og knapper er generelt større og lettere å trykke på enn før. Enda en forbedring var å gi tilbakemelding til bruker etter at en ny pris har blitt lagt til. Dette gjøres ved en liten popup på bunnen av skjermen med grønn bakgrunn og tekst som gjør det tydelig at prisen er lagt til.
 
 ## Opplevelser med react-native
 
