@@ -1,7 +1,7 @@
 import { View } from "react-native"
 import { Button, Headline, TextInput, Snackbar } from "react-native-paper"
 import { styles } from "./addPrice.style"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useMutation } from "@apollo/client"
 import { CREATE_GAS_PRICE } from "../../../graphql/mutations.graphql"
 
@@ -13,7 +13,7 @@ type Props = {
 
 export default function AddPrice({ id, refetch }: Props) {
   //The price that is set in the input field
-  const [price, setPrice] = useState<number | null>(null)
+  const [priceInput, setPriceInput] = useState<string | null>(null)
   // If snackbar should be visible. Only if price is updated
   const [snackbarVisible, setSnackbarVisible] = useState(false)
 
@@ -31,6 +31,8 @@ export default function AddPrice({ id, refetch }: Props) {
    *It uses the mutation to add a new price
    */
   const addGasPrice = async () => {
+    const price = parseFloat(priceInput)
+
     await createGasPrice({
       variables: {
         gasStation: id,
@@ -48,7 +50,7 @@ export default function AddPrice({ id, refetch }: Props) {
     //Refetch the data
     refetch({ id: id })
     //clear the price state
-    setPrice(null)
+    setPriceInput(null)
     setSuccessMessage({ price: price, show: true })
     new Promise((resolve) => setTimeout(resolve, 2000)).then(() => {
       setSuccessMessage((prev) => ({ ...prev, show: false }))
@@ -57,12 +59,22 @@ export default function AddPrice({ id, refetch }: Props) {
   }
 
   const handleTextChange = (text: string) => {
-    setPrice(parseFloat(text.replace(/^((?!(\d*\.?\d*)).)*$/g, "")))
+    let newPrice = ""
+    const legalLetters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."]
+    for (let i = 0; i < text.length; i++) {
+      const letter = text.charAt(i)
+      if (legalLetters.includes(letter)) newPrice += letter
+    }
+    setPriceInput(newPrice)
   }
 
   const onToggleSnackBar = () => setSnackbarVisible(!snackbarVisible)
 
   const onDismissSnackBar = () => setSnackbarVisible(false)
+
+  useEffect(() => {
+    console.log(priceInput)
+  }, [priceInput])
 
   return (
     <View style={styles.wrapper}>
@@ -72,7 +84,7 @@ export default function AddPrice({ id, refetch }: Props) {
         label="Pris"
         placeholder="pris (kr/L)"
         style={styles.input}
-        value={price ? price.toString() : ""}
+        value={priceInput ? priceInput : ""}
         onChangeText={handleTextChange}
       />
       <Button mode="contained" style={styles.btn} onPress={addGasPrice}>
