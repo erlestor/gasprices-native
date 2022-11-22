@@ -46,4 +46,3 @@ En stor lærdom til neste gang er å utvikle med android emulator fra starten av
 ## Forbedringspunkter
 
 - det er noen mangler på nettleser versjonen av applikasjonen. Bakgrunnnen til sidebar og maincontent når ikke helt til bunnen. I tillegg fungerer ikke infinite scroll på pc. Istedenfor laster den inn mer og mer data ved render, helt til alle stasjoner er hentet inn. På android fungerer det derimot som antatt ved at flere hentes inn når man scroller til bunnen av listen.
-- i addPrice kan man ikke skrive inn desimaltall. react-native-paper har ingen egen input felt for tall. Derav har jeg brukt regex for å se bort fra alle verdier som ikke er heltall eller desimaltall. Tydeligvis er det noe problemer med regex'n.
