@@ -8,6 +8,7 @@
 - "expo install"
 - "npm start"
 - Følg instrukser for å kjøre appen med emulator, egen mobil, eller nettleser
+- Appen er testet for android så en andrid emulator er anbefalt for å kjøring av appen.
 
 ### Backend
 
@@ -24,7 +25,7 @@ For enkelhets skyld har jeg beholdt så mye funksjonalitet som mulig fra prosjek
 
 ## Bærekraftig utvikling
 
-Her har jeg beholdt de samme tiltakene for bærekraftighet som i prosjekt 4. Søket på bensinstasjonnavn bruker debounce, altså venter applikasjonen litt før den faktisk henter inn ny data basert på søk. Dette unngår mange unødvendige kall mens bruker fortsatt skriver ferdig. Debouncing brukes også på samme måte på makspris slideren. Mindre kall til database, betyr mindre netttrafikk og derav mindre energiforbruk. Noe vi nevnte i forrige prosjekt var å bruke darkmode for å spare strømbruken til skjermen, men dette var nedprioritert da overgangen til react-native tok lengre tid enn forventet.
+Her har jeg beholdt de samme tiltakene for bærekraftighet som i prosjekt 4. Søket på bensinstasjonnavn bruker debounce, altså venter applikasjonen litt før den faktisk henter inn ny data basert på søk. Dette unngår mange unødvendige kall mens bruker fortsatt skriver ferdig. Debouncing brukes også på samme måte på makspris slideren. Mindre kall til database, betyr mindre netttrafikk og derav mindre energiforbruk. Noe vi nevnte i forrige prosjekt var å bruke darkmode for å spare strømbruken til skjermen, men dette var nedprioritert da overgangen til react-native tok lengre tid enn forventet. Når bruker scroller ned til bunnen av listen over bensinstasjoner hentes det inn flere. Dette gjør at man slipper å hente inn mange stasjoner man ikke trenger, men samtidig får brukeren en bra opplevelse da stasjoner hentes inn ved behov.
 
 ## Fornuftige valg
 
@@ -34,7 +35,7 @@ Jeg har valgt å bruke react-native-paper for de fleste komponenter ettersom det
 
 ### Design
 
-For det meste har jeg forsøkt å implementere det samme designet som var brukt i prosjekt 3. Der fikk vi en del tilbakemeldinger på kontrast mellom sidebar og hovedside og synligheten til kortene til hver bensinstasjon. Løsningen har vært å bruke "elevation" på android for å øke skyggen slik at elementene er mer distinkte. Tekst og knapper er generelt litt større og lettere å trykke på enn før.
+For det meste har jeg forsøkt å implementere det samme designet som var brukt i prosjekt 3. Der fikk vi en del tilbakemeldinger på kontrast mellom sidebar og hovedside og synligheten til kortene til hver bensinstasjon. Løsningen har vært å bruke "elevation" på android for å øke skyggen slik at elementene er mer distinkte. Tekst og knapper er generelt litt større og lettere å trykke på enn før. Enda en forbedring var å gi tilbakemelding til bruker etter at en ny pris har blitt lagt til. Dette gjøres ved en liten popup på bunnen av skjermen med grønn bakgrunn og tekst som gjør det tydelig at prisen er lagt til.
 
 ## Opplevelser med react-native
 
@@ -44,7 +45,5 @@ En stor lærdom til neste gang er å utvikle med android emulator fra starten av
 
 ## Forbedringspunkter
 
-- designet på pc er ikke perfekt. For listen med stasjoner, burde jeg ha brukt flere kolonner på pc, slik som i forrige prosjekt. Dette ville brukt skjermplassen mer effektivt. I tillegg strekker ikke bakgrunnen seg helt ned på siden. Dette har jeg snevret ned til å være et problem med FlatList. Dette er likevel ikke store problemer da fokuset var å kjøre appen på android.
-- som nevnt tidligere fungerer ikke infinite scroll. Dette gjør at man ikke kan bla ned for å se flere elementer. Løsningen er å fikse problemet med FlatList eller legge til en knapp for å se flere. Med bærekraft i tankene har jeg skrudd av funksjonen slik at appen ikke henter alle 400+ stasjoner hver render.
-- i addPrice kan man ikke skrive inn desimaltall. react-native-paper har ingen egen input felt for tall. Derav har jeg brukt regex for å se bort fra alle verdier som ikke er heltall eller desimaltall. Tydeligvis er det noe problemer med regex'n. Dette går utover funksjonaliteten i appen og har høy prioritet.
-- Applikasjonen er testet i android og nettleser. I utgangspunktet skal react-native sørge for at appen kjører på alle enheter, men for å sørge for at brukeropplevelsen er like god overalt burde flere enheter vært brukt
+- det er noen mangler på nettleser versjonen av applikasjonen. Bakgrunnnen til sidebar og maincontent når ikke helt til bunnen. I tillegg fungerer ikke infinite scroll på pc. Istedenfor laster den inn mer og mer data ved render, helt til alle stasjoner er hentet inn. På android fungerer det derimot som antatt ved at flere hentes inn når man scroller til bunnen av listen.
+- i addPrice kan man ikke skrive inn desimaltall. react-native-paper har ingen egen input felt for tall. Derav har jeg brukt regex for å se bort fra alle verdier som ikke er heltall eller desimaltall. Tydeligvis er det noe problemer med regex'n.
