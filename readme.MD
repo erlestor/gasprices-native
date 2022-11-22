@@ -48,4 +48,3 @@ En stor lærdom til neste gang er å utvikle med android emulator fra starten av
 - som nevnt tidligere fungerer ikke infinite scroll. Dette gjør at man ikke kan bla ned for å se flere elementer. Løsningen er å fikse problemet med FlatList eller legge til en knapp for å se flere. Med bærekraft i tankene har jeg skrudd av funksjonen slik at appen ikke henter alle 400+ stasjoner hver render.
 - i addPrice kan man ikke skrive inn desimaltall. react-native-paper har ingen egen input felt for tall. Derav har jeg brukt regex for å se bort fra alle verdier som ikke er heltall eller desimaltall. Tydeligvis er det noe problemer med regex'n. Dette går utover funksjonaliteten i appen og har høy prioritet.
 - Applikasjonen er testet i android og nettleser. I utgangspunktet skal react-native sørge for at appen kjører på alle enheter, men for å sørge for at brukeropplevelsen er like god overalt burde flere enheter vært brukt
--
